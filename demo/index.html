@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css">
+  <link rel="stylesheet" href="http://rawgit.com/istvan-ujjmeszaros/bootstrap-touchspin/master/dist/jquery.bootstrap-touchspin.min.css">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body ng-app="app">
+  <div ng-controller="exampleController as ctrl">
+    <div class="container">
+        <h1>Angular-bootstrap-touchspin (AngularJs directive)</h1>
+        <h3>A simple wrapper for bootstrap-touchspin by @istvan-ujjmeszaros</h3>
+        <div class="margin-bottom-1em">
+          This directive allows you to add a mobile and touch friendly input spinner component for Bootstrap 3 based on bootstrap-touchspin plugin.
+          <a href="https://github.com/rrmanzano/angular-bootstrap-touchspin">GitHub @rrmanzano</a>
+        </div>
+        <div class="margin-bottom-1em">
+          <a href="https://github.com/istvan-ujjmeszaros/bootstrap-touchspin">Oficial bootstrap-touchspin</a>
+        </div>
+        
+        <!-- Basic -->
+        <div class="panel panel-default">
+          <div class="panel-heading">Basic</div>
+          <div class="panel-body ng-cloak">
+            <div class="col-xs-6">
+               <input 
+                  type="text"
+                  ng-model="bs3TouchSpinValue"
+                  bs3-touch-spin>
+            </div>
+            <br/>
+            <br/>
+            <div class="col-xs-6">
+              <span class="label label-success">ng-model</span>
+              <span> {{ bs3TouchSpinValue }} </span>
+            </div>
+            
+            <div class="col-xs-12">
+              <figure class="highlight">
+                  <code class="language-markup">
+                  &lt;input type="text" 
+                  ng-model="bs3TouchSpinValue"
+                  bs3-touch-spin  /&gt;
+                  </code>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Basic with options-->
+        <div class="panel panel-default">
+          <div class="panel-heading">Basic with options</div>
+          <div class="panel-body ng-cloak">
+            <div class="col-xs-6">
+               <input 
+                  type="text"
+                  ng-model="bs3TouchSpinInitValue"
+                  bs3-touch-spin
+                  bs3-touch-spin-options="{initval:50}">
+            </div>
+            <br/>
+            <br/>
+            <div class="col-xs-6">
+              <span class="label label-success">ng-model</span>
+              <span> {{ bs3TouchSpinInitValue }} </span>
+            </div>
+            
+            <div class="col-xs-12">
+              <figure class="highlight">
+                  <code class="language-markup">
+                  &lt;input type="text" 
+                  ng-model="bs3TouchSpinInitValue"
+                  bs3-touch-spin 
+                  bs3-touch-spin-options="{initval:50}" /&gt;
+                  </code>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events -->
+        <div class="panel panel-default">
+          <div class="panel-heading">Events</div>
+          <div class="panel-body ng-cloak">
+              <div class="col-xs-6">
+                <input 
+                  type="text"
+                  ng-model="bs3TouchSpinEventValue"
+                  bs3-touch-spin
+                  bs3-touch-spin-options="{initval:1}"
+                  bs3-touch-spin-events="{'touchspin.on.startupspin':'onStartupSpinEvent'}">
+              </div>
+            <br/>
+            <br/>
+            <div class="col-xs-6">
+              <span class="label label-success">ng-model</span>
+              <span> {{ bs3TouchSpinEventValue }} </span>
+            </div>
+            <div class="col-xs-12">
+              <figure class="highlight">
+                  <code class="language-markup">
+                    &lt;input type="text"
+                    ng-model="bs3TouchSpinEventValue"
+                    bs3-touch-spin
+                    bs3-touch-spin-options="{initval:1}" bs3-touch-spin-events="{'touchspin.on.startupspin':'onStartupSpinEvent'}" /&gt;
+                  </code>
+              </figure>
+              <figure class="highlight">
+                  <code class="language-javascript">
+                    $scope.onStartupSpinEvent = function(e) {
+                      console.log("touchspin.on.startupspin event !!!");
+                    };
+                  </code>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://rawgit.com/istvan-ujjmeszaros/bootstrap-touchspin/master/dist/jquery.bootstrap-touchspin.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js"></script>
+  <script src="../lib/angular-bootstrap-touchspin.eventHandler.js"></script>
+  <script src="../lib/angular-bootstrap-touchspin.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
+
