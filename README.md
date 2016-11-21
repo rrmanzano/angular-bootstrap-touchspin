@@ -15,7 +15,7 @@ This directive allows you to add a mobile and touch friendly input spinner compo
 
 ## Examples and Demo
 
-[Demo](http://htmlpreview.github.io/?https://github.com/rrmanzano/angular-bootstrap-touchspin/blob/v1dev/demo/index.html)
+[Demo](http://htmlpreview.github.io/?https://github.com/rrmanzano/angular-bootstrap-touchspin/v1Dev/demo/index.html)
 
 ### Installation
 
