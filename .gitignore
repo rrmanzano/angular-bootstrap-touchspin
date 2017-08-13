@@ -47,7 +47,5 @@ jspm_packages
 # Output of 'npm pack'
 *.tgz
 
-
-### Typings ###
-## Ignore downloaded typings
-typings
+### Custom ###
+lib/

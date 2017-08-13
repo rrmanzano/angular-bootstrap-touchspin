@@ -1,30 +1,29 @@
-/// <reference path="../typings/index.d.ts" />
-
 module AngularBootstrapTouchspinUtils
 {
     export class EventHandler {
         private $scope: ng.IScope;
-        public propertyName: string;
-        public foo = (args: any) => {};
+        private propertyName: string;
+        private fn: any;
 
-        constructor($scope: ng.IScope){
+        constructor($scope: ng.IScope, propertyName: string){
             this.$scope = $scope;
+            this.propertyName = propertyName;
+            this.fn = this.$scope.$parent.$eval(this.propertyName);
         }
 
         public action = (...items: any[]):void =>
         {
-            var fn = this.$scope.$parent.$eval(this.propertyName);
-            if (!fn)
+            if (!this.fn)
             {
                 return;
             }
 
             if (!this.$scope.$root.$$phase) {
                 this.$scope.$parent.$apply(() => {
-                    fn.apply(this.$scope.$parent, items);
+                    this.fn.apply(this.$scope.$parent, items);
                 });
             } else {
-                fn.apply(this.$scope.$parent, items);
+                this.fn.apply(this.$scope.$parent, items);
             }
         }
 

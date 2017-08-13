@@ -1,4 +1,3 @@
-/// <reference path="../typings/index.d.ts" />
 /// <reference path="angular-bootstrap-touchspin.d.ts" />
 /// <reference path="angular-bootstrap-touchspin.eventHandler.ts" />
 
@@ -17,7 +16,7 @@ module AngularBootstrapTouchspin
 
         public link($scope: IScopeBootstrapTouchspinDirective, element: JQuery, attrs: IAttributesBootstrapTouchspinDirective, ngModel: ng.INgModelController)
         {
-            var options = <TouchSpinOptions>{};
+            var options = <ITouchSpinOptions>{};
             if ($scope.options){
                 angular.copy($scope.options as any, options);
             }
@@ -32,8 +31,7 @@ module AngularBootstrapTouchspin
                 var events = $scope.$eval(attrs.bs3TouchSpinEvents);
                 for (var prop in events) {
                     if (events[prop]) {
-                        var event = new AngularBootstrapTouchspinUtils.EventHandler($scope);
-                        event.propertyName = events[prop];
+                        var event = new AngularBootstrapTouchspinUtils.EventHandler($scope, events[prop]);
                         element.on(prop, event.action);
                     }
                 }

@@ -1,4 +1,11 @@
-/// <reference path="../typings/index.d.ts" />
+interface JQuery
+{
+    TouchSpin(options: ITouchSpinOptions): any;
+}
+
+interface ITouchSpinOptions{
+    initval: number;
+}
 
 interface IScopeBootstrapTouchspinDirective extends ng.IScope
 {

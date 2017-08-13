@@ -1,5 +1,5 @@
 /**
- * angular-bootstrap-touchspin - v0.1
+ * angular-bootstrap-touchspin - v0.2
  * A simple wrapper for bootstrap-touchspin by @istvan-ujjmeszaros. This directive allows you to add a mobile and touch friendly input spinner component for Bootstrap 3. based on bootstrap-touchspin plugin.
  * https://github.com/rrmanzano/angular-bootstrap-touchspin
  * License: MIT http://opensource.org/licenses/MIT
@@ -7,28 +7,28 @@
 var AngularBootstrapTouchspinUtils;
 (function (AngularBootstrapTouchspinUtils) {
     var EventHandler = (function () {
-        function EventHandler($scope) {
+        function EventHandler($scope, propertyName) {
             var _this = this;
-            this.foo = function (args) { };
             this.action = function () {
                 var items = [];
                 for (var _i = 0; _i < arguments.length; _i++) {
-                    items[_i - 0] = arguments[_i];
+                    items[_i] = arguments[_i];
                 }
-                var fn = _this.$scope.$parent.$eval(_this.propertyName);
-                if (!fn) {
+                if (!_this.fn) {
                     return;
                 }
                 if (!_this.$scope.$root.$$phase) {
                     _this.$scope.$parent.$apply(function () {
-                        fn.apply(_this.$scope.$parent, items);
+                        _this.fn.apply(_this.$scope.$parent, items);
                     });
                 }
                 else {
-                    fn.apply(_this.$scope.$parent, items);
+                    _this.fn.apply(_this.$scope.$parent, items);
                 }
             };
             this.$scope = $scope;
+            this.propertyName = propertyName;
+            this.fn = this.$scope.$parent.$eval(this.propertyName);
         }
         return EventHandler;
     }());
@@ -57,8 +57,7 @@ var AngularBootstrapTouchspin;
                     var events = $scope.$eval(attrs.bs3TouchSpinEvents);
                     for (var prop in events) {
                         if (events[prop]) {
-                            var event = new AngularBootstrapTouchspinUtils.EventHandler($scope);
-                            event.propertyName = events[prop];
+                            var event = new AngularBootstrapTouchspinUtils.EventHandler($scope, events[prop]);
                             element.on(prop, event.action);
                         }
                     }

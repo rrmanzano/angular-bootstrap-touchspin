@@ -1,5 +1,5 @@
 /**
- * angular-bootstrap-touchspin - v0.1
+ * angular-bootstrap-touchspin - v0.2
  * A simple wrapper for bootstrap-touchspin by @istvan-ujjmeszaros. This directive allows you to add a mobile and touch friendly input spinner component for Bootstrap 3. based on bootstrap-touchspin plugin.
  * https://github.com/rrmanzano/angular-bootstrap-touchspin
  * License: MIT http://opensource.org/licenses/MIT
