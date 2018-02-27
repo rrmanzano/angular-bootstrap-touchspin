@@ -5,11 +5,13 @@ interface JQuery
 
 interface ITouchSpinOptions{
     initval: number;
+    min: number;
+    max: number;
 }
 
 interface IScopeBootstrapTouchspinDirective extends ng.IScope
 {
-    options: string;
+    options: any;
 }
 
 interface IAttributesBootstrapTouchspinDirective extends ng.IAttributes

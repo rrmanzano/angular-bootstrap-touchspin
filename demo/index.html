@@ -26,10 +26,7 @@
           <div class="panel-heading">Basic</div>
           <div class="panel-body ng-cloak">
             <div class="col-xs-6">
-               <input 
-                  type="text"
-                  ng-model="bs3TouchSpinValue"
-                  bs3-touch-spin>
+               <input type="text" ng-model="bs3TouchSpinValue" bs3-touch-spin>
             </div>
             <br/>
             <br/>
@@ -39,13 +36,11 @@
             </div>
             
             <div class="col-xs-12">
-              <figure class="highlight">
+              <pre>
                   <code class="language-markup">
-                  &lt;input type="text" 
-                  ng-model="bs3TouchSpinValue"
-                  bs3-touch-spin  /&gt;
+                  &lt;input type="text" ng-model="bs3TouchSpinValue" bs3-touch-spin  /&gt;
                   </code>
-              </figure>
+              </pre>
             </div>
           </div>
         </div>
@@ -59,7 +54,7 @@
                   type="text"
                   ng-model="bs3TouchSpinInitValue"
                   bs3-touch-spin
-                  bs3-touch-spin-options="{initval:50}">
+                  bs3-touch-spin-options="{initval:50, max: 500}">
             </div>
             <br/>
             <br/>
@@ -69,14 +64,14 @@
             </div>
             
             <div class="col-xs-12">
-              <figure class="highlight">
+              <pre>
                   <code class="language-markup">
                   &lt;input type="text" 
                   ng-model="bs3TouchSpinInitValue"
                   bs3-touch-spin 
-                  bs3-touch-spin-options="{initval:50}" /&gt;
+                  bs3-touch-spin-options="{initval:50, max: 500}" /&gt;
                   </code>
-              </figure>
+                </pre>
             </div>
           </div>
         </div>
@@ -85,14 +80,14 @@
         <div class="panel panel-default">
           <div class="panel-heading">Events</div>
           <div class="panel-body ng-cloak">
-              <div class="col-xs-6">
-                <input 
-                  type="text"
-                  ng-model="bs3TouchSpinEventValue"
-                  bs3-touch-spin
-                  bs3-touch-spin-options="{initval:1}"
-                  bs3-touch-spin-events="{'touchspin.on.startupspin':'onStartupSpinEvent'}">
-              </div>
+            <div class="col-xs-6">
+              <input 
+                type="text"
+                ng-model="bs3TouchSpinEventValue"
+                bs3-touch-spin
+                bs3-touch-spin-options="{initval:1}"
+                bs3-touch-spin-events="{'touchspin.on.startupspin':'onStartupSpinEvent'}"/>
+            </div>
             <br/>
             <br/>
             <div class="col-xs-6">
@@ -100,21 +95,21 @@
               <span> {{ bs3TouchSpinEventValue }} </span>
             </div>
             <div class="col-xs-12">
-              <figure class="highlight">
+              <pre>
                   <code class="language-markup">
                     &lt;input type="text"
                     ng-model="bs3TouchSpinEventValue"
                     bs3-touch-spin
                     bs3-touch-spin-options="{initval:1}" bs3-touch-spin-events="{'touchspin.on.startupspin':'onStartupSpinEvent'}" /&gt;
                   </code>
-              </figure>
-              <figure class="highlight">
-                  <code class="language-javascript">
-                    $scope.onStartupSpinEvent = function(e) {
-                      console.log("touchspin.on.startupspin event !!!");
-                    };
-                  </code>
-              </figure>
+              </pre>
+              <pre>
+                <code class="language-javascript">
+                  $scope.onStartupSpinEvent = function(e) {
+                    console.log("touchspin.on.startupspin event !!!");
+                  };
+                </code>
+              </pre>
             </div>
           </div>
         </div>
@@ -143,7 +138,7 @@
               <span> {{ bs3TouchSpinResetValue }} </span>
             </div>
             <div class="col-xs-12">
-              <figure class="highlight">
+              <pre>
                   <code class="language-markup">
                     &lt;input 
                     type="text"
@@ -151,14 +146,60 @@
                     bs3-touch-spin
                     bs3-touch-spin-options="{initval:50}" /&gt;
                   </code>
-              </figure>
-              <figure class="highlight">
-                  <code class="language-javascript">
-                    $scope.reset = function() {
-                      $scope.bs3TouchSpinResetValue = 50;
-                    };
+              </pre>
+              <pre>
+                <code class="language-javascript">
+                  $scope.reset = function() {
+                    $scope.bs3TouchSpinResetValue = 50;
+                  };
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Change options programmatically -->
+        <div class="panel panel-default">
+          <div class="panel-heading">Change options programmatically</div>
+          <div class="panel-body ng-cloak">
+
+              <div class="col-xs-6">
+                <div class="input-group">
+                  <input 
+                    type="text"
+                    ng-model="bs3TouchSpinDynamicOptionsValue"
+                    bs3-touch-spin
+                    bs3-touch-spin-options="bs3TouchSpinDynamicOptions">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <button type="button" class="btn btn-default" ng-click="setOptions()">Set max = value + 50</button>
+              </div>
+            <br/>
+            <br/>
+            <div class="col-xs-6">
+              <span class="label label-success">ng-model</span>
+              <span> {{ bs3TouchSpinDynamicOptionsValue }} </span>
+            </div>
+            <div class="col-xs-12">
+              <pre>
+                  <code class="language-markup">
+                    &lt;input 
+                    type="text"
+                    ng-model="bs3TouchSpinDynamicOptionsValue"
+                    bs3-touch-spin
+                    bs3-touch-spin-options="bs3TouchSpinDynamicOptions" /&gt;
                   </code>
-              </figure>
+              </pre>
+              <pre>
+                <code class="language-javascript">
+                  $scope.bs3TouchSpinDynamicOptions = { max: 50, initval: 1 };
+                  $scope.setOptions = function() {
+                    $scope.bs3TouchSpinDynamicOptions.max = parseInt($scope.bs3TouchSpinDynamicOptionsValue) + 50;
+                  };
+                </code>
+              </pre>
+
             </div>
           </div>
         </div>
@@ -171,7 +212,16 @@
   <script src="http://rawgit.com/istvan-ujjmeszaros/bootstrap-touchspin/master/dist/jquery.bootstrap-touchspin.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
   <script src="../dist/angular.bootstrap.touchspin.js"></script>
+  <script type="text/javascript">
+    Prism.plugins.NormalizeWhitespace.setDefaults({
+      'remove-trailing': true,
+      'remove-indent': true,
+      'left-trim': true,
+      'right-trim': true,
+    });
+  </script>
   <script src="js/app.js"></script>
 </body>
 
