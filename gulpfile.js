@@ -49,11 +49,8 @@ gulp.task('default', ['concat-header']);
 
 gulp.task('build', ['concat-header']);
 
-// # Install gulp globally
-//		$ npm install -g gulp-cli
-//
-// # Install gulp in your project devDependencies
+// # Install devDependencies
 //		$ npm install
 //
 // # Run gulp
-//		$ gulp
+//		$ npm run build

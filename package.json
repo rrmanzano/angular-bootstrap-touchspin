@@ -1,4 +1,7 @@
-{
+{  
+  "scripts": {
+    "build" : "gulp"
+  },
   "devDependencies": {
     "@types/angular": "^1.6.28",
     "gulp": "^3.9.1",

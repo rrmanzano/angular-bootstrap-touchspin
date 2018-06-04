@@ -11,9 +11,6 @@ module AngularBootstrapTouchspin
             options: '=?bs3TouchSpinOptions'
         };
 
-        // To solve the minification problem
-        static $inject = ["$scope", "element", "attrs", "ngModel"];
-
         public link: ng.IDirectiveLinkFn = (
             $scope: IScopeBootstrapTouchspinDirective,
             element: JQuery,
@@ -54,9 +51,14 @@ module AngularBootstrapTouchspin
                 mapEvents();
                 element.TouchSpin(options);
         }
+
+        static factory(): ng.IDirectiveFactory {
+            var directive: ng.IDirectiveFactory = ($timeout:ng.ITimeoutService) => new AngularBootstrapTouchspinDirective(); 
+            return directive;
+        }
     }
 }
 
 angular
     .module('angular-bootstrap-touchspin', [])
-    .directive('bs3TouchSpin', () => new AngularBootstrapTouchspin.AngularBootstrapTouchspinDirective);
+    .directive('bs3TouchSpin', AngularBootstrapTouchspin.AngularBootstrapTouchspinDirective.factory());
